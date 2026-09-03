@@ -9,7 +9,11 @@ authors = [
 requires-python = ">=3.13"
 dependencies = [
     "pandas>=3.0.5",
+    "psycopg2>=2.9.12",
     "pyarrow>=25.0.1",
+    "sqlalchemy>=2.0.52",
+    "tdqm>=0.0.1",
+    "tqdm>=4.70.0",
 ]
 
 [project.scripts]
@@ -17,3 +21,9 @@ pipeline = "pipeline:main"
 
 [tool.uv]
 package = false
+
+[dependency-groups]
+dev = [
+    "jupyter>=1.1.1",
+    "pgcli>=4.6.0",
+]
