@@ -2,6 +2,7 @@
 # coding: utf-8
 
 import pandas as pd
+import click
 from sqlalchemy import create_engine
 from tqdm.auto import tqdm
 
@@ -28,17 +29,17 @@ parse_dates = ["tpep_pickup_datetime", "tpep_dropoff_datetime"]
 
 
 
-def run():
-    pg_user = 'root'
-    pg_pass = 'root'
-    pg_host = 'localhost'
-    pg_port = 5432
-    pg_db = 'ny_taxi'
-
-    target_table = 'yellow_taxi_data'
-    year = 2021
-    month = 1
-    chunksize = 100_000
+@click.command()
+@click.option('--pg-user', default='root', show_default=True)
+@click.option('--pg-pass', default='root', show_default=True)
+@click.option('--pg-host', default='localhost', show_default=True)
+@click.option('--pg-port', default=5432, show_default=True, type=int)
+@click.option('--pg-db', default='ny_taxi', show_default=True)
+@click.option('--target-table', default='yellow_taxi_data', show_default=True)
+@click.option('--year', default=2021, show_default=True, type=int)
+@click.option('--month', default=1, show_default=True, type=click.IntRange(1, 12))
+@click.option('--chunksize', default=100_000, show_default=True, type=int)
+def run(pg_user, pg_pass, pg_host, pg_port, pg_db, target_table, year, month, chunksize):
 
 
     prefix = "https://github.com/DataTalksClub/nyc-tlc-data/releases/download/yellow"
