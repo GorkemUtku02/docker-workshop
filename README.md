@@ -2,8 +2,6 @@
 
 A containerized ingestion pipeline that loads the NYC Yellow Taxi trip dataset into PostgreSQL.
 
-Built while working through the [DataTalksClub Data Engineering Zoomcamp](https://github.com/DataTalksClub/data-engineering-zoomcamp) Docker module, in GitHub Codespaces.
-
 ## What it does
 
 Downloads a monthly NYC Yellow Taxi CSV (gzipped, ~1.4M rows for 2021-01), streams it in chunks, and writes it into a PostgreSQL table with an explicit schema — no full-file load into memory.
@@ -102,7 +100,7 @@ SELECT count(*) FROM yellow_taxi_trips_2021_1;
 
 ## Data source
 
-Yellow Taxi trip records, mirrored by DataTalksClub:
+Yellow Taxi trip records:
 
 ```
 https://github.com/DataTalksClub/nyc-tlc-data/releases/download/yellow/yellow_tripdata_{year}-{month:02d}.csv.gz
